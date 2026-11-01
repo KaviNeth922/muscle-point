@@ -22,11 +22,12 @@ body { background: var(--bg); color: var(--text); font-family: var(--ff); line-h
 ::-webkit-scrollbar-thumb { background: var(--amber); border-radius: 2px; }
 
 /* NAV */
-nav { position: fixed; top: 16px; left: 50%; transform: translateX(-50%); z-index: 9999; background: rgba(7,12,20,0.88); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid var(--border); border-radius: 40px; padding: 10px 24px; display: flex; align-items: center; gap: 22px; white-space: nowrap; }
+nav { position: fixed; top: 16px; left: 50%; transform: translateX(-50%); z-index: 9999; background: rgba(7,12,20,0.88); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid var(--border); border-radius: 40px; padding: 10px 24px; display: flex; align-items: center; gap: 18px; white-space: nowrap; overflow-x: auto; max-width: 95%; }
 .nav-logo { color: var(--amber); font-weight: 800; font-size: 13px; letter-spacing: 0.07em; }
 .nav-sep { width: 1px; height: 16px; background: var(--border); }
 nav a { color: var(--text2); text-decoration: none; font-size: 13px; font-weight: 500; transition: color 0.18s; }
 nav a:hover { color: var(--amber); }
+nav::-webkit-scrollbar { display: none; }
 
 /* SECTIONS */
 .sec { padding: 90px 24px; }
@@ -184,9 +185,9 @@ footer { padding: 44px 24px; border-top: 1px solid var(--border); text-align: ce
   <a href="#strategy">Strategy</a>
   <a href="#phases">Phases</a>
   <a href="#condition-phases">Medical Phases</a>
+  <a href="#ab-routine">Core Plan</a>
   <a href="#nutrition">Nutrition</a>
   <a href="#supplements">Supplements</a>
-  <a href="#progress">Progress</a>
 </nav>
 
 <!-- HERO -->
@@ -279,8 +280,20 @@ footer { padding: 44px 24px; border-top: 1px solid var(--border); text-align: ce
   </div>
 </section>
 
+<!-- AB ROUTINE -->
+<section id="ab-routine" class="sec sec-alt">
+  <div class="sec-inner">
+    <div class="sec-head">
+      <div class="sec-eyebrow">Targeted Core</div>
+      <h2 class="sec-h2">Nerve-Safe Ab Routine</h2>
+      <p class="sec-desc">Slot this in on Tuesday, Thursday, and after your Saturday leg day. Movements are kept strictly controlled to prevent sudden blood pressure drops and Valsalva strain.</p>
+    </div>
+    <div id="abList" class="strat-grid"></div>
+  </div>
+</section>
+
 <!-- NUTRITION -->
-<section id="nutrition" class="sec sec-alt">
+<section id="nutrition" class="sec">
   <div class="sec-inner">
     <div class="sec-head">
       <div class="sec-eyebrow">Fuel Protocol</div>
@@ -299,7 +312,7 @@ footer { padding: 44px 24px; border-top: 1px solid var(--border); text-align: ce
 </section>
 
 <!-- SUPPLEMENTS -->
-<section id="supplements" class="sec">
+<section id="supplements" class="sec sec-alt">
   <div class="sec-inner">
     <div class="sec-head">
       <div class="sec-eyebrow">Budget Under LKR 10,000</div>
@@ -314,7 +327,7 @@ footer { padding: 44px 24px; border-top: 1px solid var(--border); text-align: ce
 </section>
 
 <!-- PROGRESS TIMELINE -->
-<section id="progress" class="sec sec-alt">
+<section id="progress" class="sec">
   <div class="sec-inner">
     <div class="sec-head">
       <div class="sec-eyebrow">What To Expect — Week By Week</div>
@@ -329,7 +342,7 @@ footer { padding: 44px 24px; border-top: 1px solid var(--border); text-align: ce
 </section>
 
 <!-- RULES -->
-<section class="sec">
+<section class="sec sec-alt">
   <div class="sec-inner">
     <div class="sec-head">
       <div class="sec-eyebrow">Non-Negotiables</div>
@@ -441,7 +454,7 @@ const PHASES = [
   }
 ];
 
-// NEW CONDITION-SPECIFIC PHASES
+// CONDITION-SPECIFIC PHASES
 const CONDITION_PHASES = [
   {
     id:'cp05', label:'Phase 0.5 (Nerve-Safe)', weeks:'Weeks 1–4', theme:'Neural Repair & Autonomic Safety', color:'#3B82F6',
@@ -468,6 +481,30 @@ const CONDITION_PHASES = [
     }
   },
   {
+    id:'cp1', label:'Phase 1 (Nerve-Safe)', weeks:'Weeks 5–12', theme:'Hypertrophy Drive (Regulated)', color:'#10B981',
+    desc:'Progressive overload introduced safely. Wide-Grip Incline replaces flat to lower BP strain. Planks replaced with Deadbugs to prevent Valsalva dizziness.',
+    days:{
+      wednesday:{ label:'Upper Body (No Inversion)', exs:[
+        {n:'Standard Push-ups', note:'Keep head looking slightly forward, not down.', sets:'3', reps:'8–12 reps', yt:'https://www.youtube.com/results?search_query=Standard+Push-ups+perfect+form'},
+        {n:'Seated Shoulder Press', note:'Use bottles/backpack. Replaces Pike Push-ups to prevent dizziness.', sets:'3', reps:'10–12 reps', yt:'https://www.youtube.com/results?search_query=Seated+Overhead+Shoulder+Press'},
+        {n:'Wide-Grip Incline Push-ups', note:'Hands on bed/table edge. Safer for autonomic system than flat.', sets:'3', reps:'10–12 reps', yt:'https://www.youtube.com/results?search_query=Wide-Grip+Incline+Push-ups'},
+        {n:'Tricep Dips (Chair)', note:'Slide hips close to the edge. Protect the shoulders.', sets:'3', reps:'12–15 reps', yt:'https://www.youtube.com/results?search_query=Bench+Dips+form'}
+      ]},
+      saturday:{ label:'Lower Body (Balance Protected)', exs:[
+        {n:'Box Squats (2-Sec Pause)', note:'Pause at bottom to kill momentum. Stand up slowly.', sets:'3', reps:'12–15 reps', yt:'https://www.youtube.com/results?search_query=Box+Squats+Pause'},
+        {n:'Reverse Lunges', note:'Hold a wall/furniture. Step backward safely.', sets:'3', reps:'8–10 each leg', yt:'https://www.youtube.com/results?search_query=Reverse+Lunges+assisted'},
+        {n:'Bulgarian Split Squats', note:'Hold a wall for balance if you feel lightheaded.', sets:'2', reps:'6–8 each leg', yt:'https://www.youtube.com/results?search_query=Bulgarian+Split+Squats'},
+        {n:'Alternating Deadbugs', note:'Replaces Planks to prevent breath-holding/dizziness.', sets:'3', reps:'12 per side', yt:'https://www.youtube.com/results?search_query=Deadbug+exercise'}
+      ]},
+      sunday:{ label:'Back & Core (Dynamic Flow)', exs:[
+        {n:'Table Inverted Rows', note:'Pull chest straight up to the wood. Controlled descent.', sets:'3', reps:'8–10 reps', yt:'https://www.youtube.com/results?search_query=Table+Inverted+Rows'},
+        {n:'Superman Reps', note:'1s squeeze and lower. Do not hold statically.', sets:'3', reps:'12 reps', yt:'https://www.youtube.com/results?search_query=Superman+exercise+reps'},
+        {n:'Dynamic Bicep Curls', note:'Use backpack/bottles. Smooth, continuous movement.', sets:'3', reps:'12–15 reps', yt:'https://www.youtube.com/results?search_query=Backpack+bicep+curls'},
+        {n:'Seated Knee Tucks', note:'Targets lower belly safely without drastically shifting blood pressure.', sets:'3', reps:'12 reps', yt:'https://www.youtube.com/results?search_query=Seated+Knee+Tucks'}
+      ]}
+    }
+  },
+  {
     id:'cp2', label:'Phase 2 (Nerve-Safe)', weeks:'Weeks 13–20', theme:'CNS Preserving Recomp', color:'#14B8A6',
     desc:'Core strength targets preserved, mechanics adjusted to prevent nerve pinching, intracranial pressure spikes, and dizzy spells. Volume capped at 2-3 sets.',
     days:{
@@ -490,6 +527,54 @@ const CONDITION_PHASES = [
         {n:'Slow Reverse Crunches', note:'Replaces Dragon Flags. No intra-abdominal pressure spikes.', sets:'3', reps:'10–12 reps', yt:'https://www.youtube.com/results?search_query=Slow+Reverse+Crunches'}
       ]}
     }
+  },
+  {
+    id:'cp3', label:'Phase 3 (Nerve-Safe)', weeks:'Weeks 21–26', theme:'The Polish (CNS Protected)', color:'#F43F5E',
+    desc:'High-level strength adaptations without extreme nervous system tax. Handstands and heavy plyometrics are completely replaced with advanced tempo and unilateral movements.',
+    days:{
+      wednesday:{ label:'Upper Body (Advanced Tempo)', exs:[
+        {n:'Archer or Staggered Push-ups', note:'Shift weight side to side. Keep neck completely neutral.', sets:'3', reps:'6–8 per side', yt:'https://www.youtube.com/results?search_query=Staggered+Push-ups'},
+        {n:'Seated Arnold Press (Bands/DB)', note:'Replaces HSPU. 100% safe for blood pressure and dizziness.', sets:'3', reps:'10 reps', yt:'https://www.youtube.com/results?search_query=Seated+Arnold+Press'},
+        {n:'Slow Tempo Push-ups', note:'4s down, 1s pause, 2s up. Builds chest without nerve strain.', sets:'3', reps:'10 reps', yt:'https://www.youtube.com/results?search_query=Tempo+Push-ups'},
+        {n:'Standard Dips (With Pause)', note:'Pause at 90°. Replaces Weighted Dips to protect shoulders.', sets:'3', reps:'10 reps', yt:'https://www.youtube.com/results?search_query=Bench+Dips+Pause'}
+      ]},
+      saturday:{ label:'Lower Body (No Impact)', exs:[
+        {n:'Assisted Pistol Squats', note:'Hold a doorway/chair. Pure strength without the balance risk.', sets:'3', reps:'5 each leg', yt:'https://www.youtube.com/results?search_query=Assisted+Pistol+Squat'},
+        {n:'Slow-Motion Deficit Lunges', note:'Replaces explosive lunges. No jarring CNS impact.', sets:'3', reps:'10 each leg', yt:'https://www.youtube.com/results?search_query=Deficit+Reverse+Lunges'},
+        {n:'Elevated Glute Bridges', note:'Feet on chair. Excellent hamstring activation.', sets:'3', reps:'12 reps', yt:'https://www.youtube.com/results?search_query=Feet+Elevated+Glute+Bridge'},
+        {n:'Slow Bicycle Crunches', note:'Replaces Dragon Flags/L-Sits to prevent severe core/neck clamping.', sets:'3', reps:'12 per side', yt:'https://www.youtube.com/results?search_query=Slow+Bicycle+Crunches'}
+      ]},
+      sunday:{ label:'Back & Core Circuit', exs:[
+        {n:'Standard Inverted Rows', note:'Feet flat on floor. Do NOT elevate feet (prevents head pressure).', sets:'3', reps:'10 reps', yt:'https://www.youtube.com/results?search_query=Inverted+Rows'},
+        {n:'Single-Arm Band/Bottle Rows', note:'Supported unilateral pulling for back width.', sets:'3', reps:'8 each arm', yt:'https://www.youtube.com/results?search_query=Single+Arm+Resistance+Band+Row'},
+        {n:'Face Pulls', note:'Crucial for posture and reversing forward head slouch.', sets:'3', reps:'15 reps', yt:'https://www.youtube.com/results?search_query=Face+Pulls+home'},
+        {n:'Dynamic Core Circuit', note:'10 Bird-Dogs + 10 Slow Crunches + 10 Knee Tucks (3 Rounds)', sets:'3', reps:'Circuit', yt:'https://www.youtube.com/results?search_query=Bird+Dog+Exercise'}
+      ]}
+    }
+  }
+];
+
+const AB_ROUTINE = [
+  {
+    day: 'Tuesday (10 Min)', focus: 'Core & Obliques',
+    exs: [
+      {n: 'Lying Leg Raises', note: 'Lower slowly to build tension without pulling back', sets: '2', reps: '12–15 reps', yt: 'https://www.youtube.com/results?search_query=Lying+Leg+Raises+proper+form'},
+      {n: 'Bicycle Crunches', note: 'Continuous breathing, do not pull your neck', sets: '2', reps: '12 per side', yt: 'https://www.youtube.com/results?search_query=Bicycle+Crunches'}
+    ]
+  },
+  {
+    day: 'Thursday (10 Min)', focus: 'Upper & Lower Core',
+    exs: [
+      {n: 'Seated Knee Tucks', note: 'Safe for nervous system (seated on chair)', sets: '2', reps: '15 reps', yt: 'https://www.youtube.com/results?search_query=Seated+Knee+Tucks+chair'},
+      {n: 'Standard Floor Crunches', note: 'Squeeze stomach down, do not pull on your neck', sets: '2', reps: '15 reps', yt: 'https://www.youtube.com/results?search_query=Standard+Floor+Crunches'}
+    ]
+  },
+  {
+    day: 'Saturday (5 Min Finisher)', focus: 'Post-Leg Day Core',
+    exs: [
+      {n: 'Weighted Russian Twists', note: 'Use heavy bottle/backpack. Slow, controlled twist.', sets: '2', reps: '15 per side', yt: 'https://www.youtube.com/results?search_query=Russian+Twists'},
+      {n: 'Modified Plank Hold', note: 'Breathe continuously! Do not hold your breath.', sets: '2', reps: '30–45s', yt: 'https://www.youtube.com/results?search_query=Plank+Hold+perfect+form'}
+    ]
   }
 ];
 
@@ -549,7 +634,7 @@ function renderWorkout(){
 }
 
 // LOGIC FOR CONDITION-SPECIFIC PHASES
-let activeCPhase = 'cp05';
+let activeCPhase = 'cp1';
 let activeCDay = 'wednesday';
 
 function renderCPhases(){
@@ -593,6 +678,29 @@ function renderCWorkout(){
     </div>`).join('');
 }
 
+function renderAbRoutine(){
+  const el = document.getElementById('abList');
+  el.innerHTML = AB_ROUTINE.map(d => `
+    <div class="strat-card" style="padding: 20px;">
+      <div class="strat-bar" style="background:#F43F5E"></div>
+      <div class="strat-title" style="margin-bottom:4px;">${d.day}</div>
+      <div style="font-size:12px; color:var(--text3); font-weight:600; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:16px;">${d.focus}</div>
+      <div class="ex-list">
+        ${d.exs.map(e => `
+          <div class="ex-row" style="padding:12px 16px; align-items:flex-start; flex-direction:column; gap:8px; cursor:default; transform:none;">
+            <div style="display:flex; justify-content:space-between; width:100%; align-items:center;">
+              <div class="ex-name" style="font-size:14px;">${e.n}</div>
+              <div class="ex-sv" style="font-size:12px; color:var(--amber); text-align:right;">${e.sets} × ${e.reps}</div>
+            </div>
+            <div class="ex-note" style="font-size:12px;">${e.note}</div>
+            <a href="${e.yt}" target="_blank" class="yt-link" style="margin-top:2px;">▶ Watch Form Video</a>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `).join('');
+}
+
 function renderMeals(){
   const el=document.getElementById('mealList');
   el.innerHTML=MEALS.map(m=>`<div class="meal-row"><div class="meal-accent" style="background:${m.color}"></div><div class="meal-icon" style="background:${m.color}15">${m.emoji}</div><div class="meal-content"><div class="meal-name">${m.name}</div><div class="meal-time" style="color:${m.color}">${m.time}</div><div class="meal-tags">${m.items.map(i=>`<span class="meal-tag">${i}</span>`).join('')}</div></div><div class="meal-protein"><div class="meal-pv" style="color:${m.color}">${m.protein}</div><div class="meal-pl">protein</div></div></div>`).join('');
@@ -625,6 +733,7 @@ function renderCAll(){
 
 renderAll();
 renderCAll();
+renderAbRoutine();
 renderMeals();
 renderSupps();
 renderTimeline();
