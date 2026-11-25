@@ -81,7 +81,7 @@ nav::-webkit-scrollbar { display: none; }
 .p-weeks { font-size: 13px; font-weight: 700; }
 .p-theme { font-size: 13px; color: var(--text2); }
 .p-desc { font-size: 14px; color: var(--text2); line-height: 1.7; }
-.day-tabs { display: flex; gap: 4px; background: var(--bg); border-radius: 10px; padding: 4px; width: fit-content; border: 1px solid var(--border); margin-bottom: 16px; }
+.day-tabs { display: flex; gap: 4px; background: var(--bg); border-radius: 10px; padding: 4px; width: fit-content; border: 1px solid var(--border); margin-bottom: 16px; flex-wrap: wrap; }
 .dtab { padding: 7px 16px; border-radius: 7px; font-weight: 600; font-size: 13px; cursor: pointer; border: none; background: transparent; color: var(--text2); transition: all 0.15s; font-family: var(--ff); }
 .dtab.active { color: #000; }
 .day-label-box { display: inline-flex; margin-bottom: 14px; padding: 7px 14px; border-radius: 8px; font-size: 13px; font-weight: 600; }
@@ -98,6 +98,19 @@ nav::-webkit-scrollbar { display: none; }
 .ex-sv { font-weight: 700; font-size: 13px; }
 .ex-rv { color: var(--text2); font-size: 12px; }
 .rest-box { background: rgba(34,197,94,0.05); border: 1px solid rgba(34,197,94,0.2); border-radius: 8px; padding: 11px 15px; font-size: 13px; color: var(--green); margin-top: 14px; }
+
+/* LIBIDO & STAMINA ADDON (Scoped to #libido-plan) */
+.libido-subhead { font-size: 12px; font-weight: 700; color: var(--text2); text-transform: uppercase; letter-spacing: 0.1em; margin: 28px 0 12px; }
+.libido-details { margin-top: 22px; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+.libido-details summary { padding: 14px 18px; font-size: 13px; font-weight: 700; color: var(--text); cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; }
+.libido-details summary::-webkit-details-marker { display: none; }
+.libido-details summary span { color: var(--purple); font-size: 12px; font-weight: 600; }
+.libido-tbl-wrap { overflow-x: auto; border-top: 1px solid var(--border); }
+.libido-tbl { width: 100%; min-width: 680px; border-collapse: collapse; font-size: 12.5px; }
+.libido-tbl th { text-align: left; padding: 11px 16px; color: var(--text3); text-transform: uppercase; font-size: 10.5px; letter-spacing: 0.08em; background: var(--bg); border-bottom: 1px solid var(--border); }
+.libido-tbl td { padding: 12px 16px; color: var(--text2); border-bottom: 1px solid var(--border); vertical-align: top; line-height: 1.55; }
+.libido-tbl tr:last-child td { border-bottom: none; }
+.libido-tbl td strong { color: var(--text); }
 
 /* MEALS */
 .meal-row { display: flex; gap: 16px; align-items: flex-start; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 18px 22px; margin-bottom: 10px; position: relative; overflow: hidden; transition: transform 0.18s; flex-wrap: wrap; }
@@ -186,6 +199,7 @@ footer { padding: 44px 24px; border-top: 1px solid var(--border); text-align: ce
   <a href="#phases">Phases</a>
   <a href="#condition-phases">Medical Phases</a>
   <a href="#ab-routine">Core Plan</a>
+  <a href="#libido-plan">Stamina Plan</a>
   <a href="#nutrition">Nutrition</a>
   <a href="#supplements">Supplements</a>
 </nav>
@@ -289,6 +303,109 @@ footer { padding: 44px 24px; border-top: 1px solid var(--border); text-align: ce
       <p class="sec-desc">Slot this in on Tuesday, Thursday, and after your Saturday leg day. Movements are kept strictly controlled to prevent sudden blood pressure drops and Valsalva strain.</p>
     </div>
     <div id="abList" class="strat-grid"></div>
+  </div>
+</section>
+
+<!-- STAMINA & LIBIDO OPTIMIZATION PLAN -->
+<section id="libido-plan" class="sec" style="border-bottom: 1px solid var(--border);">
+  <div class="sec-inner">
+    <div class="sec-head">
+      <div class="sec-eyebrow">Autonomic &amp; Vascular Conditioning</div>
+      <h2 class="sec-h2">Stamina &amp; Libido Optimization Plan</h2>
+      <p class="sec-desc">Evidence-based pelvic floor balance, Zone 2 vascular conditioning, and desk-worker hip decompression. Designed for CNS safety with zero breath-holding (Valsalva) strain—complementing the 80% foundation already in your blueprint.</p>
+    </div>
+
+    <div class="phase-tabs" id="lPhaseTabs"></div>
+    <div class="phase-meta-box" id="lPhaseMeta"></div>
+    <div class="day-tabs" id="lDayTabs"></div>
+    <div class="day-label-box" id="lDayLabel"></div>
+    <div class="ex-list" id="lExList"></div>
+    <div class="rest-box" style="background: rgba(139, 92, 246, 0.06); border-color: rgba(139, 92, 246, 0.25); color: #A78BFA;">
+      ⏱ <strong>Nerve-Safe Rule:</strong> Breathe naturally throughout every rep—never hold your breath or clench your abs, glutes, or thighs. Clinical studies show noticeable improvements around <strong>Weeks 6–8</strong>, stabilizing by <strong>Week 12</strong>.
+    </div>
+
+    <div class="libido-subhead">Objective Evaluation Metrics (8–12 Week Window)</div>
+    <div class="tips-row">
+      <div class="tip-card">
+        <div class="tip-emoji">🎯</div>
+        <div>
+          <div class="tip-v" style="color:var(--purple)">Pelvic Floor Isolation</div>
+          <div class="tip-l">Hold gentle lift 5s → 10s by Week 8 without clenching abs, glutes, or thighs or holding breath.</div>
+        </div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-emoji">🌬️</div>
+        <div>
+          <div class="tip-v" style="color:#06B6D4">Relaxation Speed</div>
+          <div class="tip-l">How fast the perineum softens and drops on a slow nasal inhale (down-training).</div>
+        </div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-emoji">🚶</div>
+        <div>
+          <div class="tip-v" style="color:var(--green)">Cardiovascular Baseline</div>
+          <div class="tip-l">20–30 min Zone 2 brisk walk at conversational pace with steady breathing &amp; no lightheadedness.</div>
+        </div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-emoji">😴</div>
+        <div>
+          <div class="tip-v">Recovery &amp; Libido</div>
+          <div class="tip-l">Consistent 7–9 hours of sleep per night and strong morning energy—the #1 driver of natural libido.</div>
+        </div>
+      </div>
+    </div>
+
+    <details class="libido-details">
+      <summary>
+        Cross-Validation Matrix: Community Consensus vs. Clinical Evidence (5 Pillars)
+        <span>Click to expand ▾</span>
+      </summary>
+      <div class="libido-tbl-wrap">
+        <table class="libido-tbl">
+          <thead>
+            <tr>
+              <th>Training Pillar</th>
+              <th>Community Consensus</th>
+              <th>Clinical Validation</th>
+              <th>Verdict &amp; Key Caveat</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Pelvic Floor Training (Slow Kegels &amp; Quick Flicks)</strong></td>
+              <td>Widely cited as the #1 direct method for delaying climax and improving erection firmness.</td>
+              <td><strong>High.</strong> RCTs &amp; Mayo Clinic / Cleveland Clinic / SMSNA guidelines confirm PFMT improves ejaculatory control &amp; rigidity.</td>
+              <td><strong>Essential.</strong> Overdoing Kegels without relaxation causes a tight (hypertonic) pelvic floor.</td>
+            </tr>
+            <tr>
+              <td><strong>Reverse Kegels &amp; Diaphragmatic Breathing</strong></td>
+              <td>The missing piece for lasting longer by stopping involuntary pelvic spasms.</td>
+              <td><strong>High.</strong> Pelvic floor PT research shows lengthening tense muscles + nasal breathing lowers sympathetic arousal spikes.</td>
+              <td><strong>Essential.</strong> Fully nerve-safe; eliminates breath-holding and blood pressure spikes.</td>
+            </tr>
+            <tr>
+              <td><strong>Aerobic Conditioning (Zone 2 Cardio)</strong></td>
+              <td>Strongly recommended for bedroom stamina, energy, and preventing performance fatigue.</td>
+              <td><strong>High.</strong> 2023 <em>Journal of Sexual Medicine</em> meta-analysis confirmed regular aerobic exercise improves erectile function &amp; blood flow.</td>
+              <td><strong>Essential.</strong> Brisk walking delivers vascular gains without draining CNS recovery.</td>
+            </tr>
+            <tr>
+              <td><strong>Posterior Chain &amp; Leg Work</strong></td>
+              <td>Top-voted gym exercises for libido and hip endurance (Squats, Glute Bridges, Split Squats).</td>
+              <td><strong>Moderate–High.</strong> Large lower-body work supports endocrine signaling, pelvic stability, and localized blood flow.</td>
+              <td><strong>Already in your plan.</strong> Covered by your Saturday lower-body routine.</td>
+            </tr>
+            <tr>
+              <td><strong>Core Control, Hip Mobility &amp; Sleep</strong></td>
+              <td>Hip stretches and 7–9 hours of sleep are cited as the real drivers of natural sex drive.</td>
+              <td><strong>High.</strong> Erections rely on parasympathetic dominance; stress &amp; poor sleep spike cortisol and suppress testosterone.</td>
+              <td><strong>High ROI.</strong> Counters 9-to-6 desk-work hip and pelvic floor tightness.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </details>
   </div>
 </section>
 
@@ -578,6 +695,64 @@ const AB_ROUTINE = [
   }
 ];
 
+// STAMINA & LIBIDO OPTIMIZATION PHASES
+const LIBIDO_PHASES = [
+  {
+    id:'lp1', label:'Phase 1 (Foundation)', weeks:'Weeks 1–3', theme:'Isolation & Down-Training', color:'#8B5CF6',
+    desc:'Establish mind-muscle connection with the pelvic floor while learning to release desk-induced tension. Practice lying on your back or seated upright, breathing normally throughout.',
+    days:{
+      pelvic:{ label:'Daily Pelvic Floor & Breath Protocol (5–7 Mins · 2–3 Short Sessions/Day)', exs:[
+        {n:'Quick Flicks', note:'1-second gentle upward lift, 2-second full release. Builds reflexive control without clenching glutes or abs.', sets:'2–3×/day', reps:'10 reps', yt:'https://www.youtube.com/results?search_query=male+pelvic+floor+quick+flicks+kegels'},
+        {n:'Slow Kegels', note:'5-second gentle upward lift, 5-second complete relaxation. Builds bulbospongiosus endurance.', sets:'2–3×/day', reps:'10 reps (5s hold)', yt:'https://www.youtube.com/results?search_query=male+kegel+exercises+proper+form'},
+        {n:'Reverse Kegels (Diaphragmatic)', note:'Slow nasal inhale into the belly; consciously let the pelvic floor melt/drop downward for 5s without pushing hard.', sets:'2–3×/day', reps:'5 reps (5s drop)', yt:'https://www.youtube.com/results?search_query=reverse+kegels+male+pelvic+floor+relaxation'}
+      ]},
+      cardio:{ label:'Vascular Stamina (Off-Days: Mon, Tue, Thu, Fri)', exs:[
+        {n:'Zone 2 Brisk Walk', note:'Brisk enough to elevate heart rate slightly while still able to speak in full sentences. Boosts nitric oxide & vascular elasticity without CNS fatigue.', sets:'4×/week', reps:'20–30 mins', yt:'https://www.youtube.com/results?search_query=zone+2+brisk+walking+benefits'}
+      ]},
+      mobility:{ label:'Desk-Worker Hip & Pelvic Decompression (5 Mins · Evening)', exs:[
+        {n:'Supine Butterfly Stretch', note:'Lie on your back, soles of feet together, let knees drop open while taking slow belly breaths. Non-inverted & nerve-safe.', sets:'Daily', reps:'60–90s hold', yt:'https://www.youtube.com/results?search_query=supine+butterfly+stretch+pelvic+floor'},
+        {n:'Happy Baby Pose', note:'Lie on your back, gently hold the outside of your knees or shins, and let the lower back and pelvic floor widen on each inhale.', sets:'Daily', reps:'60s hold', yt:'https://www.youtube.com/results?search_query=happy+baby+pose+pelvic+floor+relaxation'}
+      ]}
+    }
+  },
+  {
+    id:'lp2', label:'Phase 2 (Strength & Control)', weeks:'Weeks 4–6', theme:'Endurance & Spasm Prevention', color:'#06B6D4',
+    desc:'Increase hold duration and volume while matching contraction work with equal relaxation (Reverse Kegels) to prevent pelvic floor tightness (hypertonicity).',
+    days:{
+      pelvic:{ label:'Daily Pelvic Floor & Breath Protocol (5–7 Mins · 2 Sessions/Day)', exs:[
+        {n:'Quick Flicks', note:'1-second gentle lift, 2-second full release. Maintain zero abdominal or thigh clenching.', sets:'2×/day', reps:'15 reps', yt:'https://www.youtube.com/results?search_query=male+pelvic+floor+quick+flicks+kegels'},
+        {n:'Slow Kegels', note:'7–10 second gentle upward lift with equal 7–10 second complete rest between every rep.', sets:'2×/day', reps:'10 reps (7–10s hold)', yt:'https://www.youtube.com/results?search_query=male+kegel+exercises+proper+form'},
+        {n:'Reverse Kegels (Diaphragmatic)', note:'7–10 second relaxed nasal inhale/drop. Prevents involuntary pelvic spasms and lowers sympathetic arousal spikes.', sets:'2×/day', reps:'10 reps (7–10s drop)', yt:'https://www.youtube.com/results?search_query=reverse+kegels+male+pelvic+floor+relaxation'}
+      ]},
+      cardio:{ label:'Vascular Stamina (Off-Days: Mon, Tue, Thu, Fri)', exs:[
+        {n:'Zone 2 Brisk Walk', note:'Maintain steady conversational pace. Supports erectile blood flow and autonomic balance without draining workout recovery.', sets:'4×/week', reps:'20–30 mins', yt:'https://www.youtube.com/results?search_query=zone+2+brisk+walking+benefits'}
+      ]},
+      mobility:{ label:'Desk-Worker Hip & Pelvic Decompression (5 Mins · Evening)', exs:[
+        {n:'Supine Butterfly Stretch', note:'Reverses 9-to-6 sitting tightness in hip flexors and pelvic floor. Focus on long, quiet nasal exhales.', sets:'Daily', reps:'60–90s hold', yt:'https://www.youtube.com/results?search_query=supine+butterfly+stretch+pelvic+floor'},
+        {n:'Happy Baby Pose', note:'Feel the perineum soften and widen on every slow inhale into the lower belly.', sets:'Daily', reps:'60s hold', yt:'https://www.youtube.com/results?search_query=happy+baby+pose+pelvic+floor+relaxation'}
+      ]}
+    }
+  },
+  {
+    id:'lp3', label:'Phase 3 (Functional Coordination)', weeks:'Weeks 7–12', theme:'Blueprint Integration & Stabilization', color:'#22C55E',
+    desc:'Maintain 1–2 daily baseline sets and integrate light pelvic floor coordination directly into Saturday Glute Bridges and Alternating Deadbugs already in your plan.',
+    days:{
+      pelvic:{ label:'Daily Maintenance + Blueprint Integration (1–2 Sessions/Day)', exs:[
+        {n:'Daily Pelvic Floor Maintenance Set', note:'15 Quick Flicks + 10 Slow Kegels (10s hold) + 10 Reverse Kegels (10s relaxed drop) with steady nasal breathing.', sets:'1–2×/day', reps:'Full Circuit', yt:'https://www.youtube.com/results?search_query=male+pelvic+floor+exercises+routine'},
+        {n:'Glute Bridges (Saturday Integration)', note:'Inhale and fully relax the pelvic floor at the bottom; exhale and add a light 20–30% pelvic floor lift as you raise your hips.', sets:'Saturday', reps:'In Workout', yt:'https://www.youtube.com/results?search_query=glute+bridge+pelvic+floor+breathing'},
+        {n:'Alternating Deadbugs (Saturday / Core)', note:'Exhale with a gentle 20–30% pelvic floor lift while extending opposite arm and leg; inhale and fully release on the return.', sets:'Sat / Core', reps:'In Workout', yt:'https://www.youtube.com/results?search_query=deadbug+pelvic+floor+breathing'}
+      ]},
+      cardio:{ label:'Vascular Stamina (Off-Days: Mon, Tue, Thu, Fri)', exs:[
+        {n:'Zone 2 Brisk Walk', note:'Consistent 20–30 min brisk walks solidify vascular conditioning and nitric oxide output by Week 12.', sets:'4×/week', reps:'20–30 mins', yt:'https://www.youtube.com/results?search_query=zone+2+brisk+walking+benefits'}
+      ]},
+      mobility:{ label:'Desk-Worker Hip & Pelvic Decompression (5 Mins · Evening)', exs:[
+        {n:'Supine Butterfly Stretch', note:'Keep hips open and parasympathetic tone high before your 7–9 hours of sleep.', sets:'Daily', reps:'60–90s hold', yt:'https://www.youtube.com/results?search_query=supine+butterfly+stretch+pelvic+floor'},
+        {n:'Happy Baby Pose', note:'Gentle evening decompression to release residual lower-back and pelvic tension.', sets:'Daily', reps:'60s hold', yt:'https://www.youtube.com/results?search_query=happy+baby+pose+pelvic+floor+relaxation'}
+      ]}
+    }
+  }
+];
+
 const MEALS = [
   {name:'Breakfast', time:'7:00–8:00 AM', color:'#F59E0B', emoji:'🌅', protein:'28–40g', items:['2–4 Whole Eggs (boiled or scrambled)','2 String Hoppers (Indi Appa)','Pol Sambol (coconut relish)','Black Tea — no sugar']},
   {name:'Lunch', time:'1:00–2:00 PM', color:'#22C55E', emoji:'🍛', protein:'30–35g', items:['Red Rice (1 cup cooked)','Ambul Thiyal (sour fish curry)','Dhal Parippu','Gotukola Mallum','Coconut milk (moderate)']},
@@ -701,6 +876,62 @@ function renderAbRoutine(){
   `).join('');
 }
 
+// LOGIC FOR STAMINA & LIBIDO OPTIMIZATION PLAN
+let activeLPhase = 'lp1';
+let activeLDay = 'pelvic';
+
+function renderLPhases(){
+  const t = document.getElementById('lPhaseTabs');
+  t.innerHTML = LIBIDO_PHASES.map(p=>`<button class="ptab${p.id===activeLPhase?' active':''}" data-pid="${p.id}" style="${p.id===activeLPhase?`background:${p.color};border-color:${p.color};box-shadow:0 0 18px ${p.color}40`:''}">${p.label}<span>${p.weeks}</span></button>`).join('');
+  t.querySelectorAll('.ptab').forEach(b=>b.addEventListener('click',()=>{activeLPhase=b.dataset.pid;activeLDay='pelvic';renderLAll();}));
+}
+
+function renderLPhaseMeta(){
+  const p=LIBIDO_PHASES.find(x=>x.id===activeLPhase);
+  document.getElementById('lPhaseMeta').innerHTML=`<div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:8px"><div class="p-dot" style="background:${p.color};box-shadow:0 0 8px ${p.color}80"></div><span class="p-weeks" style="color:${p.color}">${p.weeks}</span><span class="p-theme" style="color:var(--text2)">Theme: <strong style="color:var(--text)">${p.theme}</strong></span></div><div class="p-desc">${p.desc}</div>`;
+}
+
+function renderLDayTabs(){
+  const p=LIBIDO_PHASES.find(x=>x.id===activeLPhase);
+  const days=[
+    {id:'pelvic',label:'Daily Pelvic Floor 🧘'},
+    {id:'cardio',label:'Off-Day Cardio 🚶'},
+    {id:'mobility',label:'Evening Mobility 🌙'}
+  ];
+  const t=document.getElementById('lDayTabs');
+  t.innerHTML=days.map(d=>`<button class="dtab${d.id===activeLDay?' active':''}" data-did="${d.id}" style="${d.id===activeLDay?`background:${p.color};color:#000`:''}">${d.label}</button>`).join('');
+  t.querySelectorAll('.dtab').forEach(b=>b.addEventListener('click',()=>{activeLDay=b.dataset.did;renderLDayTabs();renderLWorkout();}));
+}
+
+function renderLWorkout(){
+  const p=LIBIDO_PHASES.find(x=>x.id===activeLPhase);
+  const day=p.days[activeLDay];
+  const lbl=document.getElementById('lDayLabel');
+  lbl.style.background=`${p.color}15`;lbl.style.border=`1px solid ${p.color}30`;lbl.style.color=p.color;
+  lbl.textContent=day.label;
+  const el=document.getElementById('lExList');
+  el.innerHTML=day.exs.map((e,i)=>`
+    <div class="ex-row fade-in">
+      <div class="ex-num" style="background:${p.color}18;color:${p.color}">${String(i+1).padStart(2,'0')}</div>
+      <div class="ex-body">
+        <div class="ex-name">${e.n}</div>
+        <div class="ex-note">${e.note}</div>
+        <a href="${e.yt}" target="_blank" class="yt-link">▶ Watch Form Video</a>
+      </div>
+      <div class="ex-sets">
+        <div class="ex-sv" style="color:${p.color}">${e.sets}</div>
+        <div class="ex-rv">${e.reps}</div>
+      </div>
+    </div>`).join('');
+}
+
+function renderLAll(){
+  renderLPhases();
+  renderLPhaseMeta();
+  renderLDayTabs();
+  renderLWorkout();
+}
+
 function renderMeals(){
   const el=document.getElementById('mealList');
   el.innerHTML=MEALS.map(m=>`<div class="meal-row"><div class="meal-accent" style="background:${m.color}"></div><div class="meal-icon" style="background:${m.color}15">${m.emoji}</div><div class="meal-content"><div class="meal-name">${m.name}</div><div class="meal-time" style="color:${m.color}">${m.time}</div><div class="meal-tags">${m.items.map(i=>`<span class="meal-tag">${i}</span>`).join('')}</div></div><div class="meal-protein"><div class="meal-pv" style="color:${m.color}">${m.protein}</div><div class="meal-pl">protein</div></div></div>`).join('');
@@ -734,6 +965,7 @@ function renderCAll(){
 renderAll();
 renderCAll();
 renderAbRoutine();
+renderLAll();
 renderMeals();
 renderSupps();
 renderTimeline();
